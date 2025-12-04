@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mohammed Hafeez | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Mohammed Hafeez Qualandar Soudagar, aspiring Software Engineer.">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card: #020617;
+      --border: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      border-color: #1f2937;
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 24px;
+      margin-bottom: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    .hero-main {
+      background: linear-gradient(135deg, rgba(15,23,42,0.7), rgba(15,23,42,0.3));
+      border-radius: 24px;
+      padding: 24px 22px;
+      border: 1px solid rgba(31,41,55,0.9);
+      box-shadow: 0 22px 55px rgba(0,0,0,0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56,189,248,0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(56,189,248,0.05), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-name {
+      font-size: clamp(1.9rem, 3.1vw, 2.3rem);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .hero-role {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 520px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .meta-pill {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid #1f2937;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15,23,42,0.8);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: var(--radius-full);
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+      cursor: pointer;
+      background: #020617;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, border-color 0.08s ease, background 0.08s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(15,23,42,0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 14px 16px;
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: var(--radius-full);
+      background: #020617;
+      border: 1px solid #1f2937;
+      color: var(--muted);
+    }
+
+    .pill.highlight {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(56,189,248,0.5);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid #111827;
+      background: rgba(15,23,42,0.6);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #111827;
+      padding-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .text-sm {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: grid;
+      gap: 4px;
+    }
+
+    .list li::before {
+      content: "•";
+      margin-right: 6px;
+      color: var(--accent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      font-size: 0.86rem;
+    }
+
+    .skill-card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid #1f2937;
+      padding: 8px 10px;
+    }
+
+    .skill-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .skill-value {
+      font-weight: 500;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .project {
+      background: #020617;
+      border-radius: 16px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .project-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project-tag {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: #020617;
+      border: 1px solid #1f2937;
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .project-tech {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .project-links {
+      margin-top: 2px;
+      display: flex;
+      gap: 10px;
+      font-size: 0.8rem;
+    }
+
+    .project-links a {
+      color: var(--accent);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #111827;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .contact-row a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>MOHAMMED HAFEEZ</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-main">
+        <div class="hero-inner">
+          <div class="subtitle">Software Developer • Student</div>
+          <h1 class="hero-name">Mohammed Hafeez Qualandar Soudagar</h1>
+          <div class="hero-role">Aspiring Software Engineer · B.Tech (2022–2026)</div>
+          <p class="hero-text">
+            I am a B.Tech student at Rao Bahadur Y. Mahaballeshwarappa Engineering College, Bellary,
+            focused on building reliable software and learning by doing. I enjoy working on Android security,
+            IoT, and clean backend systems.
+          </p>
+          <div class="hero-meta">
+            <div class="meta-pill">
+              <span class="dot"></span>
+              Bengaluru / Bellary, India
+            </div>
+            <div class="meta-pill">
+              🏆 1st place coding competition
+            </div>
+            <div class="meta-pill">
+              🎓 Cloud & Blockchain certified
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View projects</a>
+            <a href="#contact" class="btn btn-outline">Contact me</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="card">
+          <div class="card-title">Core stack</div>
+          <div class="pill-row">
+            <span class="pill highlight">Python</span>
+            <span class="pill highlight">C</span>
+            <span class="pill highlight">C++</span>
+            <span class="pill highlight">Java</span>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Interests</div>
+          <div class="pill-row">
+            <span class="pill">Static analysis</span>
+            <span class="pill">Android security</span>
+            <span class="pill">IoT & embedded</span>
+            <span class="pill">Problem solving</span>
+            <span class="pill">System design basics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="about">
+        <div class="section-header">
+          <div class="section-title">About</div>
+          <div class="section-subtitle">Who I am and what I enjoy building</div>
+        </div>
+        <div class="two-col">
+          <p class="text-sm">
+            I am currently pursuing my B.Tech and targeting a Software Engineer role in the IT industry.
+            I like understanding how systems work internally and converting that into practical projects
+            that solve real problems.
+            <br><br>
+            Outside academics, I enjoy interacting with different people, traveling, and taking up
+            new challenges. I try to learn by building: games, security tools, and automation systems.
+          </p>
+          <ul class="list">
+            <li>B.Tech student, 2022–2026, RBYM Engineering College, Bellary.</li>
+            <li>Strengths: logical thinking, consistency, and willingness to learn fast.</li>
+            <li>Won first prize in a college level coding competition.</li>
+            <li>Completed certifications in Cloud Computing and Blockchain.</li>
+            <li>Comfortable working with Git, GitHub, and collaborative development.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-header">
+          <div class="section-title">Skills</div>
+          <div class="section-subtitle">Tools and technologies I work with</div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-label">Languages</div>
+            <div class="skill-value">Python, C, C++, Java</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Web</div>
+            <div class="skill-value">HTML, CSS, basic JavaScript</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Concepts</div>
+            <div class="skill-value">DSA, OOP, basic OS & networking</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Tools</div>
+            <div class="skill-value">Git, GitHub, VS Code, Arduino IDE</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Domains</div>
+            <div class="skill-value">Android security, IoT, static analysis</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Soft skills</div>
+            <div class="skill-value">Teamwork, communication, mentoring juniors</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-header">
+          <div class="section-title">Projects</div>
+          <div class="section-subtitle">Selected work that represents my skills</div>
+        </div>
+        <div class="projects-grid">
+          <article class="project">
+            <div class="project-header">
+              <div class="project-name">Number Rush · Brain Booster Game</div>
+              <div class="project-tag">Frontend · Game</div>
+            </div>
+            <p class="project-desc">
+              A fast paced number tapping game built with HTML, CSS, and JavaScript to train focus
+              and reaction time. Levels increase difficulty with larger grids and tighter timers.
+            </p>
+            <p class="project-tech">Tech: HTML, CSS, JavaScript</p>
+            <div class="project-links">
+              <a href="https://github.com/MohammedHafeez077/number-rush-brain-booster" target="_blank">Code</a>
+              <a href="https://MohammedHafeez077.github.io/number-rush-brain-booster" target="_blank">Live demo</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-header">
+              <div class="project-name">Smart Room Light Control (IoT)</div>
+              <div class="project-tag">Embedded · IoT</div>
+            </div>
+            <p class="project-desc">
+              Arduino based system that uses an LDR sensor to automatically control room lighting
+              and reduce power wastage. Includes serial monitoring and simple relay control logic.
+            </p>
+            <p class="project-tech">Tech: Arduino, C, LDR, relay modules</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Code (add link)</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-header">
+              <div class="project-name">Android Static Analysis Framework (in progress)</div>
+              <div class="project-tag">Security · Tools</div>
+            </div>
+            <p class="project-desc">
+              A static analysis framework targeting Android applications, focusing on detecting common
+              security issues in APKs using automated analysis and report generation.
+            </p>
+            <p class="project-tech">Tech: Python, static analysis tools, Git</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Code (add link when ready)</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-header">
+              <div class="project-name">Data Science / ML Mini Projects</div>
+              <div class="project-tag">Data · ML</div>
+            </div>
+            <p class="project-desc">
+              Small experiments on datasets such as classification and prediction problems,
+              focusing on clean code, basic EDA, and simple model deployment.
+            </p>
+            <p class="project-tech">Tech: Python, pandas, scikit learn (planned)</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Code (add link)</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="achievements">
+        <div class="section-header">
+          <div class="section-title">Achievements & Certifications</div>
+          <div class="section-subtitle">Things I am proud of so far</div>
+        </div>
+        <div class="two-col">
+          <ul class="list">
+            <li>First prize in college level coding competition.</li>
+            <li>Built and deployed multiple personal projects on GitHub.</li>
+            <li>Actively learning Android security and static analysis approaches.</li>
+          </ul>
+          <div>
+            <div class="badge-row">
+              <span class="pill highlight">Cloud Computing</span>
+              <span class="pill highlight">Blockchain</span>
+              <span class="pill">Upcoming: AWS / GCP fundamentals</span>
+            </div>
+            <p class="text-sm" style="margin-top: 8px;">
+              I aim to keep adding hands on certificates that complement my project work,
+              instead of just collecting badges.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-title">Contact</div>
+          <div class="section-subtitle">Let us connect</div>
+        </div>
+        <p class="text-sm" style="margin-bottom: 10px;">
+          I am open to internship opportunities, software engineer roles, and collaboration on
+          interesting projects. The best way to reach me is by email or LinkedIn.
+        </p>
+        <div class="contact-row">
+          <span>📧 Email: <a href="mailto:hafeezqualandarsoudagar@gmail.com">Mail</a></span>
+          <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/mohammed-hafeez-qualandar-soudagar-3042b3317/" target="_blank">LinkedIn</a></span>
+          <span>🐙 GitHub: <a href="https://github.com/MohammedHafeez077" target="_blank">MohammedHafeez077</a></span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Mohammed Hafeez. All rights reserved.</span>
+      <span>Built with HTML, CSS, and patience.</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
