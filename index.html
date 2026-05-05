@@ -797,7 +797,7 @@
               Bengaluru / Bellary, India
             </div>
             <div class="meta-pill">
-              🏆 1st place coding competition
+              🏆 2nd place coding competition at college level
             </div>
             <div class="meta-pill">
               🎓 Cloud & Blockchain certified
@@ -805,6 +805,10 @@
           </div>
 
           <div class="hero-actions">
+            <a href="resume.pdf" download class="btn btn-outline">
+              <span class="icon">📄</span>
+              <span>Download Resume</span>
+            </a>
             <a href="#projects" class="btn btn-primary">
               <span class="icon">🎮</span>
               <span>See what I built</span>
@@ -864,7 +868,7 @@
           <ul class="list">
             <li>B.Tech student, 2022–2026, RBYM Engineering College, Bellary.</li>
             <li>Strengths: logical thinking, consistency, patience while debugging.</li>
-            <li>Won first prize in a college level coding competition.</li>
+            <li>Won 2nd prize in a college level coding competition.</li>
             <li>Completed certifications in Cloud Computing and Blockchain.</li>
             <li>Comfortable working with Git, GitHub, and collaborative development.</li>
           </ul>
@@ -1050,9 +1054,11 @@
         </p>
         <div class="contact-row">
           <!-- TODO: replace with your real email + LinkedIn -->
-          <span>📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a></span>
-          <span>💼 LinkedIn: <a href="#" target="_blank">Add your LinkedIn</a></span>
-          <span>🐙 GitHub: <a href="https://github.com/MohammedHafeez077" target="_blank">MohammedHafeez077</a></span>
+          <span>📧 Email : 
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hafeezqualandarsoudagar@gmail.com," target="_blank">mail</a>
+          </span>
+          <span>💼 LinkedIn : <a href="https://linkedin.com/in/mohammed-hafeez-qualandar-soudagar-3042b3317" target="_blank">LinkedIn</a></span>
+          <span>🐙 GitHub : <a href="https://github.com/MohammedHafeez077" target="_blank">MohammedHafeez077</a></span>
         </div>
       </section>
     </main>
@@ -1098,6 +1104,13 @@
     let phraseIndex = 0;
     let charIndex = 0;
     let deleting = false;
+
+
+    function copyEmail() {
+    const email = "hafeezqualandarsoudagar@gmail.com";
+    navigator.clipboard.writeText(email);
+    alert("Email copied to clipboard!");
+    }
 
     function typeLoop() {
       const current = phrases[phraseIndex];
